@@ -1,0 +1,12 @@
+{
+    "name": "excommentWeb",
+    "description": "dev",
+    "autoload": {
+        "psr-4": {
+            "Source\\": "source"
+        }
+    },
+    "require": {
+        "league/plates": "v4.0.0-alpha"
+    }
+}
