@@ -1,3 +1,5 @@
+import {removeNumberFromString} from './utils.js'
+
 export let repository = {
     getData(){
         Promise.all([this.getDataWithHeuristics(), this.getDataWithoutHeuristics()])
@@ -28,7 +30,7 @@ export let repository = {
             input.value = data[i].id
             input.type = "checkbox"
             input.classList.add('form-check-input')
-            label.innerHTML = data[i].name
+            label.innerHTML = removeNumberFromString(data[i].name)
 
             containerForm.appendChild(input)
             containerForm.appendChild(label)
