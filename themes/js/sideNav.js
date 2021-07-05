@@ -1,4 +1,4 @@
-let sideNav = {
+export let sideNav = {
     btnClose: document.querySelector('.closebtn'),
     btnOpen: document.querySelector('#openNav'),
     nav: document.querySelector('#mySidenav'),
@@ -13,4 +13,3 @@ let sideNav = {
         this.btnOpen.addEventListener('click', this.openNav.bind(this))
     }
 }
-sideNav.load()

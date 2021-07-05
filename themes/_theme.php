@@ -31,13 +31,31 @@
             <div class="modal-body">
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="col-md-5">
+                        <div class="col">
                             <select class="form-control" id="">
                                 <option value="">-</option>
                                 <option value="1">Tree map</option>
                                 <option value="2">Gráfico de Barra</option>
                                 <option value="3">Gráfico de bolha</option>
                             </select>
+                        </div>
+                    </div>
+                    <div class="row mt-3" style="height: 250px; overflow-y: auto;">
+                        <div class="col-md-6">
+                            <div>
+                                <h4>Sem Heurísticas</h4>
+                            </div>
+                            <div id="with-heuristics">
+
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div>
+                                <h4>Com Heurísticas</h4>
+                            </div>
+                            <div id="without-heuristics">
+
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -51,6 +69,7 @@
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <script src="themes/js/sideNav.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="themes/js/app.js" type="module"></script>
 </body>
 </html>
