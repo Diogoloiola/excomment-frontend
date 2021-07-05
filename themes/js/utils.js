@@ -25,3 +25,57 @@ export function formatQueryTheAmountTD(inputs){
 
     return axiosConsult
 }
+
+export function factoryDataBarChart(data){
+    return {
+        chart: {
+            type: 'column'
+        },
+        xAxis: {
+            categories: ['', 'DT1', 'DT2', 'DT3', 'DT4', 'DT4', 'DT5', 'DT6', 'DT7', 'DT8', 'DT9']
+        },
+        title: {
+            text: ''
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: 'Quantidade de dividas Apache Ant'
+            },
+            stackLabels: {
+                enabled: true,
+                style: {
+                    fontWeight: 'bold',
+                    color: ( // theme
+                        Highcharts.defaultOptions.title.style &&
+                        Highcharts.defaultOptions.title.style.color
+                    ) || 'gray'
+                }
+            }
+        },
+        legend: {
+            align: 'center',
+            x: 0,
+            verticalAlign: 'bottom',
+            y: 10,
+            floating: true,
+            backgroundColor: Highcharts.defaultOptions.legend.backgroundColor || 'white',
+            borderColor: '#CCC',
+            borderWidth: 1,
+            shadow: false
+        },
+        tooltip: {
+            headerFormat: '<b>{point.x}</b><br/>',
+            pointFormat: '{series.name}: {point.y}<br/>Total: {point.stackTotal}'
+        },
+        plotOptions: {
+            column: {
+                stacking: 'normal',
+                dataLabels: {
+                    enabled: true
+                }
+            }
+        },
+        series: data
+    };
+}   
