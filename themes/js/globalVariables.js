@@ -1,6 +1,6 @@
 export const chartBarData = [
     {
-        name: 'Architecture Debt:',
+        name: 'Architecture Debt',
         data: []
     },
     {
