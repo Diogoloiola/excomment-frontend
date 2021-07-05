@@ -1,3 +1,6 @@
+import {factoryDataBarChart, technicalDebtForIndex} from './utils.js'
+import {chartBarData} from './globalVariables.js'
+
 export let chart = {
     typeGraphic(key, data, inputs){
         switch (key) {
@@ -6,8 +9,12 @@ export let chart = {
             break;
         }
     },
-    drawBarChart(data, inputs){
-        for(let i in data)
-            console.log(data[i].data)
+    drawBarChart(debtsFromRepositories, inputs){
+        debtsFromRepositories.forEach(({data})=>{
+           for(let i in data){
+               chartBarData[technicalDebtForIndex(i)].data.push(data[i])
+           }
+        })
+        Highcharts.chart('chart', factoryDataBarChart(chartBarData))
     }
 }
