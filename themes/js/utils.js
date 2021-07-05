@@ -26,6 +26,36 @@ export function formatQueryTheAmountTD(inputs){
     return axiosConsult
 }
 
+
+export function technicalDebtForIndex(tdType){
+    switch (tdType) {
+        case 'architecture debt':
+            return 0
+            break;
+        case 'build debt':
+            return 1;
+            break;
+        case 'code debt':
+            return 2;
+            break;
+        case 'requirement debt':
+            return 3
+            break;
+        case 'defect debt':
+            return 4
+            break;
+        case 'design debt':
+            return 5;
+            break;
+        case 'documentation debt':
+            return 6;
+            break;
+        case 'test debt':
+            return 7;
+            break;
+    }
+}
+
 export function factoryDataBarChart(data){
     return {
         chart: {
