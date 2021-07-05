@@ -4,3 +4,6 @@
 <button type="button" class="btn btn-blue" data-bs-toggle="modal" data-bs-target="#exampleModal">
   Selecione o gráfico
 </button>
+<div id="chart">
+
+</div>
