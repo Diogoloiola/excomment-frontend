@@ -1,22 +1,23 @@
-export function removeNumberFromString(string){
+import { URL_API } from './consts.js'
+
+export function removeNumberFromString(string) {
     return string.replace(/[0-9]/g, '');
 }
 
-export function getDataWithAxios(url){
+export function getDataWithAxios(url) {
     return axios.get(url)
 }
 
-function formatUrlToGetTheAmountTD(attribute, id){
-    if(attribute === 'with-heuristics')
-        return `http://localhost:3000/dt/project/${id}/database/with`
-    return `http://localhost:3000/dt/project/${id}/database/without`
+function formatUrlToGetTheAmountTD(attribute, id) {
+    if (attribute === 'with-heuristics')
+        return `${URL_API}/dt/project/${id}/database/with`
 }
 
-export function formatQueryTheAmountTD(inputs){
+export function formatQueryTheAmountTD(inputs) {
 
     let axiosConsult = []
 
-    inputs.forEach(input=>{
+    inputs.forEach(input => {
         const typeRepository = input.getAttribute('type-repository')
         const value = input.value
         const urlApi = formatUrlToGetTheAmountTD(typeRepository, value)
@@ -27,7 +28,7 @@ export function formatQueryTheAmountTD(inputs){
 }
 
 
-export function technicalDebtForIndex(tdType){
+export function technicalDebtForIndex(tdType) {
     switch (tdType) {
         case 'architecture debt':
             return 0
@@ -56,7 +57,7 @@ export function technicalDebtForIndex(tdType){
     }
 }
 
-export function factoryDataBarChart(data){
+export function factoryDataBarChart(data) {
     return {
         chart: {
             type: 'column'
@@ -108,4 +109,4 @@ export function factoryDataBarChart(data){
         },
         series: data
     };
-}   
+}

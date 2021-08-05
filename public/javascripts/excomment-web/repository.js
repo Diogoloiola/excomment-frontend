@@ -1,27 +1,27 @@
-import {removeNumberFromString} from './utils.js'
+import { removeNumberFromString } from './utils.js'
+import { URL_API } from './consts.js'
 
 export let repository = {
-    getData(){
-        Promise.all([this.getDataWithHeuristics(), this.getDataWithoutHeuristics()])
-        .then(results=> {
-            this.listData(results[0],'with-heuristics')
-            this.listData(results[1],'without-heuristics')
-        });
+    getData() {
+        Promise.all([this.getDataWithHeuristics()])
+            .then(results => {
+                this.listData(results[0], 'with-heuristics')
+            });
     },
-    getDataWithHeuristics(){
-        return axios.get('http://localhost:3000/projects/with')
+    getDataWithHeuristics() {
+        return axios.get(`${URL_API}/projects/with`)
     },
-    getDataWithoutHeuristics(){
-        return axios.get('http://localhost:3000/projects/without')
+    getDataWithoutHeuristics() {
+        return axios.get(`${URL_API}/projects/without`)
     },
-    listData(info, id){
+    listData(info, id) {
 
         let container = document.getElementById(id)
 
-        const {data} = info
+        const { data } = info
 
 
-        for(let i in data){
+        for (let i in data) {
             let containerForm = document.createElement('div')
             let input = document.createElement('input')
             let label = document.createElement('label')
