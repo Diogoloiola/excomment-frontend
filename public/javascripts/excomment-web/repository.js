@@ -17,7 +17,7 @@ export let repository = {
     listData(info, id){
 
         let container = document.getElementById(id)
-        
+
         const {data} = info
 
 
