@@ -11,9 +11,6 @@ export let repository = {
     getDataWithHeuristics() {
         return axios.get(`${URL_API}/projects/with`)
     },
-    getDataWithoutHeuristics() {
-        return axios.get(`${URL_API}/projects/without`)
-    },
     listData(info, id) {
 
         let container = document.getElementById(id)
@@ -29,7 +26,8 @@ export let repository = {
             containerForm.classList.add('form-check')
             input.value = data[i].id
             input.setAttribute('type-repository', id)
-            input.type = "checkbox"
+            input.type = "radio"
+            input.name = "input"
             input.classList.add('form-check-input')
             label.innerHTML = removeNumberFromString(data[i].name)
 
