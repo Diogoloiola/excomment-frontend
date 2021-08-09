@@ -1,20 +1,28 @@
-import {formatQueryTheAmountTD} from './utils.js'
-import {chart} from './chart.js'
+import { formatQuery } from './utils.js'
+import { chart } from './chart.js'
 
 export let BD = {
     btnSearch: document.querySelector('#search-repository'),
-    searchTheAmountTD(){
-       const inputs = document.querySelectorAll('input:checked')
-       const promisesConsults = formatQueryTheAmountTD(inputs)
-       
-       Promise.all(promisesConsults)
-        .then((results)=> {
-            chart.typeGraphic(1, results, inputs)
-        });
+    search() {
+        const chartType = document.querySelector('#graphic-options').selectedIndex
 
+        if (chartType !== 0) {
+            const inputs = document.querySelectorAll('input:checked')
+            const promisesConsults = formatQuery(chartType, inputs)
 
+            const container = document.querySelector('#exampleModal');
+            const modal = bootstrap.Modal.getInstance(container);
+
+            Promise.all(promisesConsults)
+                .then((results) => {
+                    chart.typeGraphic(chartType, results)
+                    modal.hide()
+                });
+        } else {
+            alert('O tipo do gráfico não foi informado')
+        }
     },
-    load(){
-        this.btnSearch.onclick = this.searchTheAmountTD.bind(this)
+    load() {
+        this.btnSearch.onclick = this.search.bind(this)
     }
 }
