@@ -10,9 +10,9 @@ export function getDataWithAxios(url) {
 
 function formatUrlToGet(typeUrl, id) {
     if (typeUrl === 1)
-        return `${URL_API}/jsonHierarchical/${id}/database/with?flag=true`
-    else if (typeUrl === 2)
         return `${URL_API}/jsonHierarchical/${id}/database/with?flag=false`
+    else if (typeUrl === 2)
+        return `${URL_API}/jsonHierarchical/${id}/database/with?flag=true`
 }
 
 export function formatQuery(typeUrl, inputs) {
