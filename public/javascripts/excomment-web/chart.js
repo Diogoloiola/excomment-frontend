@@ -1,3 +1,5 @@
+import { createLegendForTreeMap } from './utils.js'
+
 export let chart = {
     container: document.querySelector('#chart'),
     typeGraphic(type, dataAxios) {
@@ -38,6 +40,18 @@ export let chart = {
         chart.draw();
     },
     drawTreeMapNoScale(data) {
+        var chart = anychart.treeMap([data], "as-tree");
+        chart.maxDepth(3);
+
+        chart.title().useHtml(true);
+        chart.title("Treemap: <br><br>" +
+            "<span style='font-size:12; font-style:italic'>" +
+            "</span>");
+
+        chart.container("chart");
+
+        chart.draw();
+        createLegendForTreeMap('#container-legend')
 
     },
     resetChart() {
