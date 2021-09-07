@@ -13,6 +13,8 @@ function formatUrlToGet(typeUrl, id) {
         return `${URL_API}/jsonHierarchical/${id}/database/with?flag=false`
     else if (typeUrl === 2)
         return `${URL_API}/jsonHierarchical/${id}/database/with?flag=true`
+    else if (typeUrl === 3)
+        return `${URL_API}/jsonHierarchical/${id}/database/with?flag=true&colors=true`
 }
 
 export function formatQuery(typeUrl, inputs) {
@@ -29,7 +31,7 @@ export function formatQuery(typeUrl, inputs) {
 }
 
 
-export function createLegendForTreeMap(idContainer) {
+export function createLegendForGraphic(idContainer) {
     const container = document.querySelector(idContainer)
     let colors = {
         "Dívida de arquitetura": "#332288",
