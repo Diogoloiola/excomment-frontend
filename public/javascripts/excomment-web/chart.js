@@ -1,4 +1,4 @@
-import { createLegendForTreeMap } from './utils.js'
+import { createLegendForGraphic } from './utils.js'
 
 export let chart = {
     container: document.querySelector('#chart'),
@@ -11,6 +11,8 @@ export let chart = {
             case 2:
                 this.drawTreeMapNoScale(dataAxios[0].data);
                 break;
+            case 3:
+                this.drawSunburstNoScale(dataAxios[0].data);
         }
     },
     drawTreeMap(data) {
@@ -51,8 +53,17 @@ export let chart = {
         chart.container("chart");
 
         chart.draw();
-        createLegendForTreeMap('#container-legend')
+        createLegendForGraphic('#container-legend')
 
+    },
+    drawSunburstNoScale(data) {
+        const chart = anychart.sunburst([data], "as-tree");
+
+        chart.calculationMode("ordinal-from-leaves");
+        chart.container("chart");
+
+        chart.draw();
+        createLegendForGraphic('#container-legend')
     },
     resetChart() {
         this.container.innerHTML = ''
