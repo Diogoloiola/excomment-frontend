@@ -1,5 +1,7 @@
-import { createLegendForGraphic } from './utils.js'
+import { createLegendForGraphic, factoryDataBarChart, technicalDebtForIndex } from './utils.js'
 import SunburstNoScale from './SuburtsScale.js';
+import { chartBarData } from './globalVariables.js'
+
 export let chart = {
     container: document.querySelector('#chart'),
     typeGraphic(type, dataAxios) {
@@ -17,6 +19,8 @@ export let chart = {
             case 4:
                 this.drawSunburstScale(dataAxios[0].data);
                 break;
+            case 5:
+                this.drawBarChart(dataAxios[0].data)
         }
     },
     drawTreeMap(data) {
@@ -74,5 +78,13 @@ export let chart = {
     },
     resetChart() {
         this.container.innerHTML = ''
+    },
+    drawBarChart(data) {
+
+        for (let i in data) {
+            chartBarData[technicalDebtForIndex(i)].data.push(data[i])
+        }
+
+        Highcharts.chart('chart', factoryDataBarChart(chartBarData))
     }
 }
