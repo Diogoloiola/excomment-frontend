@@ -1,5 +1,5 @@
 import { createLegendForGraphic } from './utils.js'
-
+import SunburstNoScale from './SuburtsScale.js';
 export let chart = {
     container: document.querySelector('#chart'),
     typeGraphic(type, dataAxios) {
@@ -13,6 +13,10 @@ export let chart = {
                 break;
             case 3:
                 this.drawSunburstNoScale(dataAxios[0].data);
+                break;
+            case 4:
+                this.drawSunburstScale(dataAxios[0].data);
+                break;
         }
     },
     drawTreeMap(data) {
@@ -64,6 +68,9 @@ export let chart = {
 
         chart.draw();
         createLegendForGraphic('#container-legend')
+    },
+    drawSunburstScale(data) {
+        SunburstNoScale(data);
     },
     resetChart() {
         this.container.innerHTML = ''
