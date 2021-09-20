@@ -149,3 +149,7 @@ export function technicalDebtForIndex(tdType) {
             break;
     }
 }
+
+export function resetDataBarChart(data) {
+    data.forEach(element => element.data = [])
+}
