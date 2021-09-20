@@ -15,6 +15,8 @@ function formatUrlToGet(typeUrl, id) {
         return `${URL_API}/jsonHierarchical/${id}/database/with?flag=true`
     else if (typeUrl === 3)
         return `${URL_API}/jsonHierarchical/${id}/database/with?flag=true&colors=true`
+    else if (typeUrl === 4)
+        return `${URL_API}/jsonHierarchical/${id}/database/with?flag=false&type=2`
 }
 
 export function formatQuery(typeUrl, inputs) {
