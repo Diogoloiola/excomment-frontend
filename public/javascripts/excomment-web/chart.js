@@ -1,4 +1,4 @@
-import { createLegendForGraphic, factoryDataBarChart, technicalDebtForIndex } from './utils.js'
+import { createLegendForGraphic, factoryDataBarChart, technicalDebtForIndex, resetDataBarChart } from './utils.js'
 import SunburstNoScale from './SuburtsScale.js';
 import { chartBarData } from './globalVariables.js'
 
@@ -80,7 +80,7 @@ export let chart = {
         this.container.innerHTML = ''
     },
     drawBarChart(data) {
-
+        resetDataBarChart(chartBarData);
         for (let i in data) {
             chartBarData[technicalDebtForIndex(i)].data.push(data[i])
         }
