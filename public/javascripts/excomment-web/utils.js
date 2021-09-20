@@ -76,7 +76,7 @@ export function factoryDataBarChart(data) {
             categories: ['', 'DT1', 'DT2', 'DT3', 'DT4', 'DT4', 'DT5', 'DT6', 'DT7', 'DT8', 'DT9']
         },
         title: {
-            text: ''
+            text: 'Gráfico de barra empilhada'
         },
         yAxis: {
             min: 0,
