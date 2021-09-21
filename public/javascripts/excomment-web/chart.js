@@ -1,4 +1,10 @@
-import { createLegendForGraphic, factoryDataBarChart, technicalDebtForIndex, resetDataBarChart } from './utils.js'
+import {
+    createLegendForGraphic,
+    factoryDataBarChart,
+    technicalDebtForIndex,
+    resetDataBarChart,
+    createArrayForLineChart
+} from './utils.js'
 import SunburstNoScale from './SuburtsScale.js';
 import { chartBarData } from './globalVariables.js'
 
@@ -91,6 +97,11 @@ export let chart = {
         Highcharts.chart('chart', factoryDataBarChart(chartBarData))
     },
     drawLineBar(data) {
-        console.log(data);
+        let finalData = {}
+        data.forEach(repository => {
+            createArrayForLineChart(repository.data, finalData)
+
+        })
+        console.log(finalData);
     }
 }
