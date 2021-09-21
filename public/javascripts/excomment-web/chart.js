@@ -5,13 +5,14 @@ import {
     resetDataBarChart,
     createArrayForLineChart,
     factoryDataLineChart,
+    getNameRepository,
 } from './utils.js'
 import SunburstNoScale from './SuburtsScale.js';
 import { chartBarData } from './globalVariables.js'
 
 export let chart = {
     container: document.querySelector('#chart'),
-    typeGraphic(type, dataAxios) {
+    typeGraphic(type, dataAxios, inputs = null) {
         this.resetChart()
         switch (type) {
             case 1:
@@ -30,7 +31,8 @@ export let chart = {
                 this.drawBarChart(dataAxios[0].data)
                 break
             case 6:
-                this.drawLineBar(dataAxios)
+                this.drawLineBar(dataAxios, inputs)
+                break;
         }
     },
     drawTreeMap(data) {
@@ -97,14 +99,12 @@ export let chart = {
 
         Highcharts.chart('chart', factoryDataBarChart(chartBarData))
     },
-    drawLineBar(data) {
+    drawLineBar(data, inputs) {
         let finalData = {}
-        let nameRepository = []
+        let names = getNameRepository(inputs)
         data.forEach((repository, index) => {
             createArrayForLineChart(repository.data, finalData)
-            nameRepository.push(`Project ${index + 1}`)
-
         })
-        Highcharts.chart('chart', factoryDataLineChart(finalData, nameRepository))
+        Highcharts.chart('chart', factoryDataLineChart(finalData, names))
     }
 }
