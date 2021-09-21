@@ -121,6 +121,56 @@ export function factoryDataBarChart(data) {
     };
 }
 
+export function factoryDataLineChart(data, names) {
+    let info = {
+        chart: {
+            type: 'line'
+        },
+        title: {
+            text: 'Linha do tempo do projeto'
+        },
+        subtitle: {
+            text: 'repositórios de código-fonte'
+        },
+        xAxis: {
+            categories: names
+        },
+        yAxis: {
+            title: {
+                text: 'Quantidade de (DT)'
+            }
+        },
+        plotOptions: {
+            line: {
+                dataLabels: {
+                    enabled: true
+                },
+                enableMouseTracking: false
+            }
+        },
+        series: [{
+            name: "Dívida de arquitetura",
+            data: [...data['architecture debt']]
+        }, {
+            name: "Dívida de construção",
+            data: [...data['build debt']]
+        }, {
+            name: "Dívida de código",
+            data: [...data['code debt']]
+        }, {
+            name: "Dívida de defeito",
+            data: [...data['defect debt']]
+        }, {
+            name: "Dívida de desing",
+            data: [...data['design debt']]
+        }, {
+            name: "Dívida de requisitos",
+            data: [...data['requirement debt']]
+        }]
+    }
+    return info;
+}
+
 export function technicalDebtForIndex(tdType) {
     switch (tdType) {
         case 'architecture debt':
