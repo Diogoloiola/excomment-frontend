@@ -214,3 +214,11 @@ export function createArrayForLineChart(data1, dataFinal) {
         }
     }
 }
+
+export function getNameRepository(inputs) {
+    let names = []
+    inputs.forEach(input => {
+        names.push(input.getAttribute('name-reposittory'))
+    })
+    return names;
+}
