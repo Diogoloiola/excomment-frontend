@@ -17,7 +17,7 @@ function formatUrlToGet(typeUrl, id) {
         return `${URL_API}/jsonHierarchical/${id}/database/with?flag=true&colors=true`
     else if (typeUrl === 4)
         return `${URL_API}/jsonHierarchical/${id}/database/with?flag=false&type=2`
-    else if (typeUrl === 5)
+    else if (typeUrl === 5 || typeUrl === 6)
         return `${URL_API}/dt/project/${id}/database/with`
 }
 
