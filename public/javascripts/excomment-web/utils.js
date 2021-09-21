@@ -67,7 +67,7 @@ export function createLegendForGraphic(idContainer) {
     }
 }
 
-export function factoryDataBarChart(data) {
+export function factoryDataBarChart(data, name) {
     return {
         chart: {
             type: 'column'
@@ -76,12 +76,12 @@ export function factoryDataBarChart(data) {
             categories: ['', 'DT1', 'DT2', 'DT3', 'DT4', 'DT4', 'DT5', 'DT6', 'DT7', 'DT8', 'DT9']
         },
         title: {
-            text: 'Gráfico de barra empilhada'
+            text: `Gráfico de barra empilhada ${name}`
         },
         yAxis: {
             min: 0,
             title: {
-                text: 'Quantidade de dividas Apache Ant'
+                text: `Quantidade de dividas ${name}`
             },
             stackLabels: {
                 enabled: true,

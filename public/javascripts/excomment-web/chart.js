@@ -28,7 +28,7 @@ export let chart = {
                 this.drawSunburstScale(dataAxios[0].data);
                 break;
             case 5:
-                this.drawBarChart(dataAxios[0].data)
+                this.drawBarChart(dataAxios[0].data, inputs)
                 break
             case 6:
                 this.drawLineBar(dataAxios, inputs)
@@ -91,13 +91,14 @@ export let chart = {
     resetChart() {
         this.container.innerHTML = ''
     },
-    drawBarChart(data) {
+    drawBarChart(data, inputs) {
+        let name = getNameRepository(inputs)[0]
         resetDataBarChart(chartBarData);
         for (let i in data) {
             chartBarData[technicalDebtForIndex(i)].data.push(data[i])
         }
 
-        Highcharts.chart('chart', factoryDataBarChart(chartBarData))
+        Highcharts.chart('chart', factoryDataBarChart(chartBarData, name))
     },
     drawLineBar(data, inputs) {
         let finalData = {}
