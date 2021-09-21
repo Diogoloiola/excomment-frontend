@@ -153,3 +153,14 @@ export function technicalDebtForIndex(tdType) {
 export function resetDataBarChart(data) {
     data.forEach(element => element.data = [])
 }
+
+export function createArrayForLineChart(data1, dataFinal) {
+    for (let i in data1) {
+        if (dataFinal[i] == undefined) {
+            dataFinal[i] = []
+            dataFinal[i].push(data1[i])
+        } else {
+            dataFinal[i].push(data1[i])
+        }
+    }
+}
