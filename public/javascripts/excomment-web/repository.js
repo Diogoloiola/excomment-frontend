@@ -26,6 +26,7 @@ export let repository = {
             containerForm.classList.add('form-check')
             input.value = data[i].id
             input.setAttribute('type-repository', id)
+            input.setAttribute('name-reposittory', data[i].name)
             input.type = "checkbox"
             input.name = "input"
             input.classList.add('form-check-input')
