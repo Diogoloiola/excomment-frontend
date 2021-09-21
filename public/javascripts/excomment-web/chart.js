@@ -3,7 +3,8 @@ import {
     factoryDataBarChart,
     technicalDebtForIndex,
     resetDataBarChart,
-    createArrayForLineChart
+    createArrayForLineChart,
+    factoryDataLineChart,
 } from './utils.js'
 import SunburstNoScale from './SuburtsScale.js';
 import { chartBarData } from './globalVariables.js'
@@ -98,10 +99,12 @@ export let chart = {
     },
     drawLineBar(data) {
         let finalData = {}
-        data.forEach(repository => {
+        let nameRepository = []
+        data.forEach((repository, index) => {
             createArrayForLineChart(repository.data, finalData)
+            nameRepository.push(`Project ${index + 1}`)
 
         })
-        console.log(finalData);
+        Highcharts.chart('chart', factoryDataLineChart(finalData, nameRepository))
     }
 }
