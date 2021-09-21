@@ -17,7 +17,7 @@ export let BD = {
                 const modal = bootstrap.Modal.getInstance(container);
                 Promise.all(promisesConsults)
                     .then((results) => {
-                        chart.typeGraphic(chartType, results)
+                        chart.typeGraphic(chartType, results, inputs)
                         modal.hide()
                     });
             }
