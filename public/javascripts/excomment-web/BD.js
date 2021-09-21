@@ -8,16 +8,19 @@ export let BD = {
 
         if (chartType !== 0) {
             const inputs = document.querySelectorAll('input:checked')
-            const promisesConsults = formatQuery(chartType, inputs)
+            if (chartType < 6 && inputs.length > 1) {
+                alert('Selecione apenas um repositório')
+            } else {
+                const promisesConsults = formatQuery(chartType, inputs)
 
-            const container = document.querySelector('#exampleModal');
-            const modal = bootstrap.Modal.getInstance(container);
-
-            Promise.all(promisesConsults)
-                .then((results) => {
-                    chart.typeGraphic(chartType, results)
-                    modal.hide()
-                });
+                const container = document.querySelector('#exampleModal');
+                const modal = bootstrap.Modal.getInstance(container);
+                Promise.all(promisesConsults)
+                    .then((results) => {
+                        chart.typeGraphic(chartType, results)
+                        modal.hide()
+                    });
+            }
         } else {
             alert('O tipo do gráfico não foi informado')
         }
