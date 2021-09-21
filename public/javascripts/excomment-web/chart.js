@@ -21,6 +21,9 @@ export let chart = {
                 break;
             case 5:
                 this.drawBarChart(dataAxios[0].data)
+                break
+            case 6:
+                this.drawLineBar(dataAxios)
         }
     },
     drawTreeMap(data) {
@@ -86,5 +89,8 @@ export let chart = {
         }
 
         Highcharts.chart('chart', factoryDataBarChart(chartBarData))
+    },
+    drawLineBar(data) {
+        console.log(data);
     }
 }
