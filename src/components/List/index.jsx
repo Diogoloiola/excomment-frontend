@@ -1,11 +1,11 @@
 import { Container, Icon } from './style'
-import { FaBuilding, FaHome } from "react-icons/fa";
+import { FaChartBar, FaGithub } from "react-icons/fa";
 
 function getIcon(type) {
     if (type === '1')
-        return <FaBuilding />
+        return <FaChartBar />
     else if (type === '2')
-        return <FaHome />
+        return <FaGithub />
 }
 
 export default function List({ type, text }) {

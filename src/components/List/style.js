@@ -9,6 +9,7 @@ export const Container = styled.div`
   flex-direction: column;
   background-color: #fff;
   border-radius: 5px;
+  cursor: pointer;
 `;
 
 export const Icon = styled.span`

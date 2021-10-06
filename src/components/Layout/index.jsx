@@ -1,5 +1,5 @@
 import { Container, LeftSide, ContainerIcon, RightSide } from './style';
-import { FaBuilding, FaHome } from "react-icons/fa";
+import { FaChartBar, FaHome, FaGithub } from "react-icons/fa";
 import Header from '../Header';
 import Home from '../Home';
 
@@ -20,7 +20,12 @@ export default function Layout() {
                     </li>
                     <li>
                         <ContainerIcon>
-                            <FaBuilding />
+                            <FaChartBar />
+                        </ContainerIcon>
+                    </li>
+                    <li>
+                        <ContainerIcon>
+                            <FaGithub />
                         </ContainerIcon>
                     </li>
                     <li></li>
