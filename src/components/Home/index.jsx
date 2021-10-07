@@ -6,8 +6,8 @@ export default function Home() {
         <Container>
             <h3>Dashboard</h3>
             <Flex>
-                <List type='1' text={'Technical debt view'} />
-                <List type='2' text={'GiFT'} />
+                <List type='1' text={'Technical debt view'} route={'/excomment-web'} />
+                <List type='2' text={'GiFT'} route={'/gift'} />
             </Flex>
         </Container>
     )

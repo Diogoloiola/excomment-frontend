@@ -19,4 +19,17 @@ export default createGlobalStyle`
     html, body, #root{
         height: 100%;
     }
+    .link-card {
+        width: 272px;
+        height: 160px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        background-color: #fff;
+        border-radius: 5px;
+        cursor: pointer;
+        color: #000;
+        text-decoration: none;
+    }
 `;
