@@ -2,6 +2,7 @@ import { Container, LeftSide, ContainerIcon, RightSide } from './style';
 import { FaChartBar, FaHome, FaGithub } from "react-icons/fa";
 import Header from '../Header';
 import Home from '../Home';
+import Gift from '../Gift'
 
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
@@ -35,6 +36,7 @@ export default function Layout() {
                 <Header />
                 <Router>
                     <Route path="/" exact render={() => <Home />} />
+                    <Route path="/gift" exact component={() => <Gift />} />
                 </Router>
             </RightSide>
         </Container>

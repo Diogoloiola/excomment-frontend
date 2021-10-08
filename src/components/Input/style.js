@@ -7,5 +7,5 @@ export const StyledInput = styled.input`
     display: block;
     border: none;
     outline: none;
-    border-bottom: 1px solid #E0E0E0;
+    border: 1px solid #E0E0E0;
 `
