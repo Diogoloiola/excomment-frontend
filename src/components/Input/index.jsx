@@ -1,7 +1,7 @@
 import { StyledInput } from './style';
 
-export default function Input({ placeholder, type }) {
+export default function Input({ placeholder, type, event }) {
     return (
-        <StyledInput placeholder={placeholder} type={type} />
+        <StyledInput onChange={event} placeholder={placeholder} type={type} />
     )
 }
