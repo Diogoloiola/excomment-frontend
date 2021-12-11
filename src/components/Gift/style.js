@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Container = styled.section`
+export const Container = styled.section `
   width: 90%;
   height: 80%;
   background-color: #fff;
@@ -10,7 +10,7 @@ export const Container = styled.section`
   position: relative;
 `;
 
-export const Header = styled.header`
+export const Header = styled.header `
   width: 100%;
   height: 10%;
   background-color: #2e2e3a;
@@ -27,8 +27,12 @@ export const Header = styled.header`
   }
 `
 
-export const Content = styled.section`
+export const Content = styled.section `
+  overflow: auto;
+  width: 100%;
+  height: 90%;
   padding: 15px;
+  box-sizing: border-box;
 `
 
 export const Select = styled.select `
@@ -41,13 +45,13 @@ export const Select = styled.select `
     background-color: #fff;
 `
 
-export const FormGroup = styled.section`
+export const FormGroup = styled.section `
   display: flex;
   justify-content: space-between;
   margin-bottom: 10px;
 `
 
-export const Form = styled.section`
+export const Form = styled.section `
   width: 100%;
   label {
     display: block;
@@ -55,7 +59,7 @@ export const Form = styled.section`
   }
 `
 
-export const W24 = styled.div`
+export const W24 = styled.div `
   width: 24%;
   label {
     display: block;
@@ -63,7 +67,7 @@ export const W24 = styled.div`
   }
 `
 
-export const W49 = styled.div`
+export const W49 = styled.div `
   width: 49%;
   label {
     display: block;
@@ -71,7 +75,7 @@ export const W49 = styled.div`
   }
 `
 
-export const W75 = styled.div`
+export const W75 = styled.div `
   width: 75%;
   label {
     display: block;
@@ -79,7 +83,7 @@ export const W75 = styled.div`
   }
 `
 
-export const Button = styled.button`
+export const Button = styled.button `
   padding: 10px 15px;
   margin-top: 30px;
   outline: none;
