@@ -17,13 +17,14 @@ function renderInputs(data, setId) {
     }
 }
 
-async function submitForm(chartType, id){
+async function submitForm(chartType, id, setChart, setChartTypeGraph){
     const excommentApi = new ExcommentApi(axios, 'http://localhost:3000')
     const result = await excommentApi.getHierarchicalJson(chartType, id)
-    console.log(result)
+    setChartTypeGraph(chartType)
+    setChart(result)
 }
 
-export default function Modal({ show, setShow }) {
+export default function Modal({ show, setShow, setChartData, setChartTypeGraph }) {
     const [data, setData] = useState([]);
     const [chartType, setChartType] = useState('')
     const [id, setId] = useState(null)
@@ -61,7 +62,7 @@ export default function Modal({ show, setShow }) {
             </ModalBootstrap.Body>
             <ModalBootstrap.Footer>
                 <Button variant="danger" onClick={() => setShow(false)}>Fechar</Button>
-                <Button variant="primary" onClick={() => submitForm(chartType, id)}>Pesquisar</Button>
+                <Button variant="primary" onClick={() => submitForm(chartType, id, setChartData, setChartTypeGraph)}>Pesquisar</Button>
             </ModalBootstrap.Footer>
         </ModalBootstrap>
     )
