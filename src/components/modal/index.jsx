@@ -3,20 +3,30 @@ import axios from 'axios';
 import { Modal as ModalBootstrap, Form, Button } from 'react-bootstrap';
 import { useEffect, useState } from 'react';
 
-function renderInputs(data) {
+
+function renderInputs(data, setId) {
     if (data) {
-       return data.map((repository, i) => {
+        return data.map((repository, i) => {
             return (
-                <Form.Group className="mb-3" key={i}>
-                    <Form.Check type="radio" label={repository.name} />
-                </Form.Group>
+                <div>
+                    <input key={i} onChange={(e) => setId(e.target.value)} type="radio" value={repository.id} name="project" />
+                    <label htmlFor="">{repository.name}</label>
+                </div>
             )
         })
     }
 }
 
+async function submitForm(chartType, id){
+    const excommentApi = new ExcommentApi(axios, 'http://localhost:3000')
+    const result = await excommentApi.getHierarchicalJson(chartType, id)
+    console.log(result)
+}
+
 export default function Modal({ show, setShow }) {
     const [data, setData] = useState([]);
+    const [chartType, setChartType] = useState('')
+    const [id, setId] = useState(null)
 
     useEffect(() => {
         async function getData() {
@@ -34,7 +44,7 @@ export default function Modal({ show, setShow }) {
             <ModalBootstrap.Body>
                 <div>
                     <label htmlFor="">Selecione o tipo de gráfico</label>
-                    <Form.Select>
+                    <Form.Select onChange={(e) => setChartType(e.target.value)}>
                         <option value="">-</option>
                         <option value="1">Tree map(Com escala)</option>
                         <option value="2">Tree amp(Por dívida)</option>
@@ -46,12 +56,12 @@ export default function Modal({ show, setShow }) {
                 </div>
                 <div>
                     <label htmlFor="">Selecione o projeto</label>
-                    {renderInputs(data)}
+                    {renderInputs(data, setId)}
                 </div>
             </ModalBootstrap.Body>
             <ModalBootstrap.Footer>
                 <Button variant="danger" onClick={() => setShow(false)}>Fechar</Button>
-                <Button variant="primary">Pesquisar</Button>
+                <Button variant="primary" onClick={() => submitForm(chartType, id)}>Pesquisar</Button>
             </ModalBootstrap.Footer>
         </ModalBootstrap>
     )
