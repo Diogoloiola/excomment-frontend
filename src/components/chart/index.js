@@ -9,6 +9,12 @@ export default class ChartAnychart {
         switch (this.type) {
             case 1:
                 return this.drawTreeMap()
+            case 2:
+                return this.drawTreeMapNoScale()
+            case 3:
+                return this.drawSunburstNoScale()
+            case 4:
+                return this.drawSunburstScale()
             default:
                 return []
         }
@@ -33,6 +39,26 @@ export default class ChartAnychart {
         chart.title("Treemap <br><br>" +
             "<span style='font-size:12; font-style:italic'>" +
             "</span>");
+        return chart
+    }
+    drawTreeMapNoScale() {
+        const chart = this.anychart.treeMap([this.data], "as-tree");
+        chart.maxDepth(3);
+
+        chart.title().useHtml(true);
+        chart.title("Treemap: <br><br>" +
+            "<span style='font-size:12; font-style:italic'>" +
+            "</span>");
+
+        return chart
+    }
+
+    drawSunburstNoScale() {
+        const chart = this.anychart.sunburst([this.data], "as-tree");
+
+        chart.calculationMode("ordinal-from-leaves");
+        chart.container("chart");
+
         return chart
     }
 }
