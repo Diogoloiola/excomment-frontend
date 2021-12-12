@@ -2,14 +2,15 @@ import { useState } from 'react'
 import { Table as TableStyled, Select } from './style'
 
 function formatUrl(url, tagName, type = 1) {
-    if(type == 1)
+    if(type === 1)
         return `${url}/archive/refs/tags/${tagName}.zip`
-    else if(type == 2)
+    else if(type === 2)
         return `${url}/archive/refs/heads/main.zip`
 }
 
 function createOptionTable(releases, url) {
     if (releases.length) {
+        // eslint-disable-next-line
         return releases.map((release, j) => {
             if (release.name) {
                 return (
