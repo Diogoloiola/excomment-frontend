@@ -12,7 +12,7 @@ function renderChart(data, chartType) {
         return (<AnyChart
             instance={stage}
             width={'100%'}
-            height={700}
+            height={chartType === 1 || chartType === 2 ? 700 : 450}
             charts={[chart.typeGraphic()]}
         />)
     }
