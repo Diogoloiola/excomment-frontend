@@ -10,7 +10,6 @@ import {
 
 export function TableRepositories() {
     const { state } = useLocation();
-    console.log(state)
     return (
         <Container>
             <Header>
