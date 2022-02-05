@@ -8,4 +8,5 @@ $router = new Router();
 
 $router->setNamespace("Source\App\Controllers");
 $router->setRoute("/create_user", "UserController", "create");
+$router->setRoute("/login_user", "UserController", "login");
 $router->init();

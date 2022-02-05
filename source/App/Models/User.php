@@ -15,12 +15,15 @@ class User
     {
 
         try {
-            $stmt = $this->instance->prepare("insert into users (email, password) values (?, ?)");
-            $password = password_hash($password, PASSWORD_BCRYPT);
-            $stmt->bindParam(1, $email);
-            $stmt->bindParam(2, $password);
-            if ($stmt->execute()) {
-                return true;
+            if (!$this->findByEmail($email)) {
+                $stmt = $this->instance->prepare("insert into users (email, password) values (?, ?)");
+                $password = password_hash($password, PASSWORD_BCRYPT);
+                $stmt->bindParam(1, $email);
+                $stmt->bindParam(2, $password);
+                if ($stmt->execute()) {
+                    return true;
+                }
+                return false;
             }
             return false;
         } catch (\PDOException $error) {
@@ -31,7 +34,7 @@ class User
     public function findByEmail(string $email)
     {
         try {
-            $stmt = $this->instance->prepare("select * from user  where email = (?)");
+            $stmt = $this->instance->prepare("select * from users  where email = (?)");
             $stmt->bindParam(1, $email);
             $stmt->execute();
             return $stmt->fetch(\PDO::FETCH_OBJ);
