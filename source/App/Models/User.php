@@ -2,13 +2,11 @@
 
 namespace Source\App\Models;
 
-use PDO;
-
 class User
 {
     private $instance;
 
-    public function __construct(PDO $instance)
+    public function __construct(\PDO $instance)
     {
         $this->instance = $instance;
     }
@@ -17,9 +15,10 @@ class User
     {
 
         try {
-            $stmt = $this->instance->prepare("insert into user (email, password) values (?, ?)");
+            $stmt = $this->instance->prepare("insert into users (email, password) values (?, ?)");
+            $password = password_hash($password, PASSWORD_BCRYPT);
             $stmt->bindParam(1, $email);
-            $stmt->bindParam(2,  password_hash($password, PASSWORD_BCRYPT));
+            $stmt->bindParam(2, $password);
             if ($stmt->execute()) {
                 return true;
             }
@@ -35,7 +34,7 @@ class User
             $stmt = $this->instance->prepare("select * from user  where email = (?)");
             $stmt->bindParam(1, $email);
             $stmt->execute();
-            return $stmt->fetch(PDO::FETCH_OBJ);
+            return $stmt->fetch(\PDO::FETCH_OBJ);
         } catch (\PDOException $error) {
             echo "Error: " . $error->getMessage();
         }
