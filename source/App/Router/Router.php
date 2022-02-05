@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace Source\App\Router;
 
@@ -15,12 +15,12 @@ class Router
 	public function setRoute($route, $class, $method): void
 	{
 		$this->routes[] =
-		[
-			'route' => $route, "class" => $class, "method" => $method
-		];
+			[
+				'route' => $route, "class" => $class, "method" => $method
+			];
 	}
 
-	public function getRoute() : array
+	public function getRoute(): array
 	{
 		return $this->routes;
 	}
@@ -36,7 +36,7 @@ class Router
 		return $this->namespace;
 	}
 
-	function getUrl() : string
+	function getUrl(): string
 	{
 		return parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 	}
@@ -49,9 +49,8 @@ class Router
 		$currentUrl = $this->getUrl();
 		foreach ($namespace as  $currentNamespace) {
 			foreach ($routes as $route) {
-				if($route['route'] == $currentUrl)
-				{
-					$class = $currentNamespace.'\\'.$route['class'];
+				if ($route['route'] == $currentUrl) {
+					$class = $currentNamespace . '\\' . $route['class'];
 					$controller = new $class;
 					$action = $route['method'];
 					$controller->$action();
@@ -59,10 +58,10 @@ class Router
 				}
 			}
 		}
-		if ($flag) {
-			$class = $this->namespace[0].'\\'.'Site';
-			$controller = new $class;
-			$controller->error();
-		}
+		// if ($flag) {
+		// 	$class = $this->namespace[0] . '\\' . 'Site';
+		// 	$controller = new $class;
+		// 	$controller->error();
+		// }
 	}
 }
