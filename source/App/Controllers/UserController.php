@@ -27,9 +27,9 @@ class UserController
     {
         $user = (new User($this->connection))->findByEmail($_POST['email']);
         if ($user) {
-            echo password_verify($_POST['password'], $user->password);
             if (password_verify($_POST['password'], $user->password)) {
-                echo json_encode(['message' => "Usuário autorizado"]);
+                $data = (new User($this->connection))->updateData($user->email);
+                echo json_encode(['token' => $data[0], 'timestamp' => $data[1]]);
             } else {
                 echo json_encode(['message' => "Algo deu errado, email ou senha podem ter sido digitados de maneira errada"]);
             }

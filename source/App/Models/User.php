@@ -42,4 +42,24 @@ class User
             echo "Error: " . $error->getMessage();
         }
     }
+
+    public function updateData(string $email)
+    {
+        try {
+            $jwt = md5(uniqid(rand(), true));
+            $date = new \DateTime();
+            $date->add(new \DateInterval('P3D'));
+            $timestamp_token =  $date->getTimestamp();
+
+            $stmt = $this->instance->prepare("update users set jwt = :jwt, timestamp_token = :timestamp_token where email = :email");
+            $stmt->execute(array(
+                ':jwt'   => $jwt,
+                ':timestamp_token' => $timestamp_token,
+                ':email' => $email
+            ));
+            return [$jwt, $timestamp_token];
+        } catch (\PDOException $error) {
+            echo "Error: " . $error->getMessage();
+        }
+    }
 }
