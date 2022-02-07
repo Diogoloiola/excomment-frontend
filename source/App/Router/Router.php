@@ -2,6 +2,7 @@
 
 namespace Source\App\Router;
 
+header('Access-Control-Allow-Origin: *');
 class Router
 {
 	private $routes;

@@ -4,6 +4,7 @@ namespace Source\App\Controllers;
 
 use Source\App\Models\User;
 
+header('Access-Control-Allow-Origin: *');
 class UserController
 {
     private $connection;
@@ -17,7 +18,7 @@ class UserController
     {
         $user = new User($this->connection);
         if ($user->create($_POST['email'], $_POST['password'])) {
-            echo json_encode(['message' => "suceso ao criar o usuário"]);
+            echo json_encode(['message' => "sucesso ao criar o usuário"]);
         } else {
             echo json_encode(['message' => "erro ao criar o usuário"]);
         }

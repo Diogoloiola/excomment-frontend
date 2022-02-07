@@ -2,6 +2,8 @@
 
 use Source\App\Router\Router;
 
+header('Access-Control-Allow-Origin: *');
+header("Access-Control-Allow-Headers: Content-Type");
 require_once __DIR__ . '/vendor/autoload.php';
 
 $router = new Router();
