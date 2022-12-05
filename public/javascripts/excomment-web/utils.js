@@ -10,15 +10,15 @@ export function getDataWithAxios(url) {
 
 function formatUrlToGet(typeUrl, id) {
     if (typeUrl === 1)
-        return `${URL_API}/jsonHierarchical/${id}/database/with?flag=false`
+        return `${URL_API}/projects/${id}/hierarchical_json`
     else if (typeUrl === 2)
-        return `${URL_API}/jsonHierarchical/${id}/database/with?flag=true`
+        return `${URL_API}/projects/${id}/hierarchical_json`
     else if (typeUrl === 3)
-        return `${URL_API}/jsonHierarchical/${id}/database/with?flag=true&colors=true`
+        return `${URL_API}/projects/${id}/hierarchical_json`
     else if (typeUrl === 4)
-        return `${URL_API}/jsonHierarchical/${id}/database/with?flag=false&type=2`
+        return `${URL_API}/projects/${id}/hierarchical_json`
     else if (typeUrl === 5 || typeUrl === 6)
-        return `${URL_API}/dt/project/${id}/database/with`
+        return `${URL_API}/projects/${id}/amount_technical_debt`
 }
 
 export function formatQuery(typeUrl, inputs) {
@@ -150,22 +150,22 @@ export function factoryDataLineChart(data, names) {
         },
         series: [{
             name: "Dívida de arquitetura",
-            data: [...data['architecture debt']]
+            data: [...data['architecture_debt']]
         }, {
             name: "Dívida de construção",
-            data: [...data['build debt']]
+            data: [...data['build_debt']]
         }, {
             name: "Dívida de código",
-            data: [...data['code debt']]
+            data: [...data['code_debt']]
         }, {
             name: "Dívida de defeito",
-            data: [...data['defect debt']]
+            data: [...data['defect_debt']]
         }, {
             name: "Dívida de desing",
-            data: [...data['design debt']]
+            data: [...data['design_debt']]
         }, {
             name: "Dívida de requisitos",
-            data: [...data['requirement debt']]
+            data: [...data['requirement_debt']]
         }]
     }
     return info;
@@ -173,30 +173,22 @@ export function factoryDataLineChart(data, names) {
 
 export function technicalDebtForIndex(tdType) {
     switch (tdType) {
-        case 'architecture debt':
+        case 'architecture_debt':
             return 0
-            break;
-        case 'build debt':
+        case 'build_debt':
             return 1;
-            break;
-        case 'code debt':
+        case 'code_debt':
             return 2;
-            break;
-        case 'requirement debt':
+        case 'requirement_debt':
             return 3
-            break;
-        case 'defect debt':
+        case 'defect_debt':
             return 4
-            break;
-        case 'design debt':
+        case 'design_debt':
             return 5;
-            break;
-        case 'documentation debt':
+        case 'documentation_debt':
             return 6;
-            break;
-        case 'test debt':
+        case 'test_debt':
             return 7;
-            break;
     }
 }
 

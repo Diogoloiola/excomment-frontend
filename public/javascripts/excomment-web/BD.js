@@ -1,7 +1,7 @@
 import { formatQuery } from './utils.js'
 import { chart } from './chart.js'
 
-export let BD = {
+export const BD = {
     btnSearch: document.querySelector('#search-repository'),
     search() {
         const chartType = document.querySelector('#graphic-options').selectedIndex

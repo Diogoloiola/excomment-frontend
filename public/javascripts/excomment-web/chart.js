@@ -36,10 +36,10 @@ export let chart = {
         }
     },
     drawTreeMap(data) {
-        var chart = anychart.treeMap([data], "as-tree");
+        const chart = anychart.treeMap(data, "as-tree");
         chart.maxDepth(3);
         // cria e configur as escala das cores
-        var customColorScale = anychart.scales.linearColor();
+        const customColorScale = anychart.scales.linearColor();
 
         // setando a escala de cores no gráfico
         customColorScale.colors(["#0000FF", "#fff", "#ff0000"]);
@@ -62,7 +62,7 @@ export let chart = {
         chart.draw();
     },
     drawTreeMapNoScale(data) {
-        var chart = anychart.treeMap([data], "as-tree");
+        const chart = anychart.treeMap([data], "as-tree");
         chart.maxDepth(3);
 
         chart.title().useHtml(true);
@@ -94,8 +94,11 @@ export let chart = {
     drawBarChart(data, inputs) {
         let name = getNameRepository(inputs)[0]
         resetDataBarChart(chartBarData);
-        for (let i in data) {
-            chartBarData[technicalDebtForIndex(i)].data.push(data[i])
+
+        const { amount } = data;
+
+        for (let i in amount) {
+            chartBarData[technicalDebtForIndex(i)].data.push(amount[i])
         }
 
         Highcharts.chart('chart', factoryDataBarChart(chartBarData, name))
@@ -104,7 +107,7 @@ export let chart = {
         let finalData = {}
         let names = getNameRepository(inputs)
         data.forEach((repository, index) => {
-            createArrayForLineChart(repository.data, finalData)
+            createArrayForLineChart(repository.data.amount, finalData)
         })
         Highcharts.chart('chart', factoryDataLineChart(finalData, names))
     }

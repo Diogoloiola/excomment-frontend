@@ -1,36 +1,35 @@
 import { removeNumberFromString } from './utils.js'
 import { URL_API } from './consts.js'
 
-export let repository = {
+export const repository = {
     getData() {
         Promise.all([this.getDataWithHeuristics()])
             .then(results => {
-                this.listData(results[0], 'with-heuristics')
+                this.listData(results[0].data, 'with-heuristics')
             });
     },
     getDataWithHeuristics() {
-        return axios.get(`${URL_API}/projects/with`)
+        return axios.get(`${URL_API}/projects`)
     },
-    listData(info, id) {
+    listData(data, id) {
 
-        let container = document.getElementById(id)
+        const container = document.getElementById(id)
 
-        const { data } = info
+        const { projects } = data;
 
-
-        for (let i in data) {
-            let containerForm = document.createElement('div')
-            let input = document.createElement('input')
-            let label = document.createElement('label')
+        for (let i in projects) {
+            const containerForm = document.createElement('div')
+            const input = document.createElement('input')
+            const label = document.createElement('label')
 
             containerForm.classList.add('form-check')
-            input.value = data[i].id
+            input.value = projects[i].id
             input.setAttribute('type-repository', id)
-            input.setAttribute('name-reposittory', data[i].name)
+            input.setAttribute('name-reposittory', projects[i].name)
             input.type = "checkbox"
             input.name = "input"
             input.classList.add('form-check-input')
-            label.innerHTML = removeNumberFromString(data[i].name)
+            label.innerHTML = removeNumberFromString(projects[i].name)
 
             containerForm.appendChild(input)
             containerForm.appendChild(label)
