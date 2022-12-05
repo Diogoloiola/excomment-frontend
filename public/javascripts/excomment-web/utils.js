@@ -9,21 +9,22 @@ export function getDataWithAxios(url) {
 }
 
 function formatUrlToGet(typeUrl, id) {
+    console.log(typeUrl);
     if (typeUrl === 1)
         return `${URL_API}/projects/${id}/hierarchical_json`
     else if (typeUrl === 2)
-        return `${URL_API}/projects/${id}/hierarchical_json`
+        return `${URL_API}/projects/${id}/hierarchical_json?type=tree_map_with_debt`
     else if (typeUrl === 3)
-        return `${URL_API}/projects/${id}/hierarchical_json`
+        return `${URL_API}/projects/${id}/hierarchical_json?type=sunburst_with_debt`
     else if (typeUrl === 4)
-        return `${URL_API}/projects/${id}/hierarchical_json`
+        return `${URL_API}/projects/${id}/hierarchical_json?type=sunburst_with_scale`
     else if (typeUrl === 5 || typeUrl === 6)
         return `${URL_API}/projects/${id}/amount_technical_debt`
 }
 
 export function formatQuery(typeUrl, inputs) {
 
-    let axiosConsult = []
+    const axiosConsult = []
 
     inputs.forEach(input => {
         const value = input.value
