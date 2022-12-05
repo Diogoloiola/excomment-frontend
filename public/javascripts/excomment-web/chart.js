@@ -36,7 +36,7 @@ export let chart = {
         }
     },
     drawTreeMap(data) {
-        const chart = anychart.treeMap(data, "as-tree");
+        const chart = anychart.treeMap([data], "as-tree");
         chart.maxDepth(3);
         // cria e configur as escala das cores
         const customColorScale = anychart.scales.linearColor();
@@ -90,6 +90,7 @@ export let chart = {
     },
     resetChart() {
         this.container.innerHTML = ''
+        document.getElementById('container-legend').innerHTML = ''
     },
     drawBarChart(data, inputs) {
         let name = getNameRepository(inputs)[0]

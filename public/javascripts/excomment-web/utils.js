@@ -37,7 +37,9 @@ export function formatQuery(typeUrl, inputs) {
 
 export function createLegendForGraphic(idContainer) {
     const container = document.querySelector(idContainer)
-    let colors = {
+    container.innerHTML = '';
+    
+    const colors = {
         "Dívida de arquitetura": "#332288",
         "Dívida de construção": "#117733",
         "Dívida de código": "#44AA99",
