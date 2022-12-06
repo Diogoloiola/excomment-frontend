@@ -38,3 +38,9 @@ OBS: Esse sistema de visualização consome uma api que pode ser encontrada <a h
     yarn start
 
 Agora é só acessar o seguinte endereço: http://localhost:3001
+
+### URL API
+
+Para alterar a url padrão de acesso a api basta alterar nesse arquivo.
+
+    excomment-web/public/javascripts/excomment-web/consts.js
